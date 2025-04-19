@@ -125,6 +125,7 @@ class LakeBoat:
         self.update_direction()
         self.update_alarm_state()
         self.update_camera_state()
+        self.process_action_handlers()
 
 '''
     Example usage:
