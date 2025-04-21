@@ -1,4 +1,5 @@
 from enum import Enum
+from ruddercontrol import rudder
 
 class Direction(Enum):
     FORWARD = 1,
@@ -120,20 +121,16 @@ class LakeBoat:
         actions.clear()  # TODO there is a better way to do this, but we can change it later
 
     def update(self):
+        #Rudder does not have to be in here b/c 
         self.update_speed()
         self.update_rotation()
         self.update_direction()
         self.update_alarm_state()
         self.update_camera_state()
         self.process_action_handlers()
-
-'''
-    Example usage:
     
-    boat = LakeBoat()
+boat = LakeBoat()
     
-    if __name__ === '__main__':
-        # some event loop
+if __name__ == '__main__':
         while True:
             boat.update()
-'''
