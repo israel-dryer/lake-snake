@@ -1,12 +1,9 @@
 from steerinput import EncoderSteering
 from lcddisplay import display
 
-
-draw = display(30,40,"TESTING")
-steering = EncoderSteering()
-
 class RadioController:
     def __init__(self):
+        #draw = display(30,40,"TESTING")
         self.InstrumentMode = "Applied Speed"
         
     def CurrentInstrument(self):
@@ -17,13 +14,16 @@ class RadioController:
     def CheckForInstrumentUpdate(self):
         if self.InstrumentMode == "Applied Speed":
             draw = display(20,30,"Applied Speed:" + str(steering.Encoder_Net_Rotation))
-            
-    def update(self):
+            draw.DrawText()
+             
+    def updateself(self):
+        steering.update()
         self.CheckForInstrumentUpdate()
-        draw.DrawText()
         
+
+#Instancing all of the other scripts to update them
 radio = RadioController()
+steering = EncoderSteering()
+
 while True:
-    radio.update()
-    
-        
+    radio.updateself()
